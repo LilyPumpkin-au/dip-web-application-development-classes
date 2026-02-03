@@ -1,18 +1,17 @@
-// Challenge 5 Solution
 // Initialise the array
-let numbers = [1, 2, 3, 4, 5];
+let users = [
+    [1, "password1"],
+    [2, "password2"],
+    [3, "password3"],
+];
 
-// Define the function doubleNumbers
-// function doubleNumbers(arr) {
-//   let doubled = arr.map((number) => number * 2);
+// Define the function update pasword
+function updatePassowrd(){
+    return users.map((user) => user[1] + "hththth");
+}
 
-//   return doubled;
-// }
-
-let doubledNumbers = (arr) => arr.map((number) => number * 2);
-
-// Call the function with the numbers array
-let result = doubleNumbers(numbers);
+// call the function with the numbers array
+let updatedUsers = updatePassowrd(users);
 
 // Console log the new array
-console.log(result);
+console.log(updatedUsers);
