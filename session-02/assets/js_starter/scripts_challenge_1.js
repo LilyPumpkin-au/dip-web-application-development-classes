@@ -17,4 +17,4 @@ numbers.slice(0, 2);
 console.log(numbers.slice(0, 2));
 
 // Set the value of the outputfield inner html to the new array
-document.getElementById("OutputField").innerHTML = numbers;
+document.getElementById("OutputField1").innerHTML = numbers;
