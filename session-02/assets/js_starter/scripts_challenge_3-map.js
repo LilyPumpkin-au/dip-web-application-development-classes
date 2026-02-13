@@ -15,5 +15,3 @@ if (numbers3Map.includes(5)) {
 else {
   console.log("The number 5 is not in the array.");
 }
-
-// https://chatgpt.com/share/698ebe7c-c2f4-8012-82f8-a50a4d38b301
