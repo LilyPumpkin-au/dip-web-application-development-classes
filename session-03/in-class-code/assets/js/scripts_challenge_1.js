@@ -17,6 +17,9 @@ const userObject = {
   isEmployed: true,
 
   // Method to change the age property
+  const changeAge(x){
+    return age[] = x;
+  }
 };
 
 // Execute the method to change the age
