@@ -243,3 +243,61 @@ console.log("mySet is", mySet, mySet.size); // [ "apple", "banana" ] size: 2 重
 //// まとめ
 // Set に対して要素があるか確認するときは has() を使う
 // プリミティブは値で比較、オブジェクトは参照で比較
+
+/////////////////////////////// Array Method
+// map, forEach : loops
+// filter, find, findIndex : array searching
+
+console.log("Array methods");
+
+///////////////// Map : loops over an existing array, create a new array
+const mapTestA = [1, 2, 3];
+const mapTestB = mapTestA.map(() => {}); // mapTestB is created with 3 values, each of which is undefined
+
+console.log(`mapTestA is ${mapTestA}`); // mapTestA is 1,2,3
+console.log(`mapTestB is ${mapTestB}`); // mapTestB is ,,
+
+const mapTestC = mapTestA.map(() => 5); // mapTestC is created with 3 values, each of which is 5
+console.log(`mapTestC is ${mapTestC}`); // mapTestC is 5,5,5
+
+const mapTestD = mapTestA.map((item) => {
+  return item;
+}); // mapTestD is created as an exact copy of mapTestA​
+console.log(`mapTestD is  ${mapTestD}`); //mapTestD is  1,2,3
+
+const mapTestE = mapTestA.map((item) => item * 4); //mapTestE is created as a copy of a, with each element of a multiplied by 4
+console.log(`mapTestE is  ${mapTestE}`); // mapTestE is  4,8,12
+
+const mapTestF = mapTestA.map((item, index, arr) =>
+  console.log(item, index, arr),
+);
+// map のコールバック関数は 3つの引数 を受け取れる
+// item 配列の現在の要素
+// index その要素のインデックス
+// arr　元の配列そのもの
+// つまり、item が各要素、index がその位置、arr が元の配列 [1, 2, 3]
+
+// 1 0
+// Array(3) [ 1, 2, 3 ]
+// 0: 1
+// 1: 2
+// 2: 3
+// length: 3
+// <prototype>: Array []
+// scripts-memo.js:272:11
+// 2 1
+// Array(3) [ 1, 2, 3 ]
+// 0: 1
+// 1: 2
+// 2: 3
+// length: 3
+// <prototype>: Array []
+// scripts-memo.js:272:11
+// 3 2
+// Array(3) [ 1, 2, 3 ]
+// 0: 1
+// 1: 2
+// 2: 3
+// length: 3
+
+///////////////// filter
