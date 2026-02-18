@@ -301,3 +301,36 @@ const mapTestF = mapTestA.map((item, index, arr) =>
 // length: 3
 
 ///////////////// filter
+// filter は、条件に合う要素だけを取り出して、新しい配列を作るメソッドです。
+// map に似ている
+// 新しい配列を作る
+// 欲しい要素だけを選ぶことができる
+// どの要素を含めるかはコールバック関数が決める
+// コールバック関数が true を返したとき、その要素が含まれる
+console.log(`Filter`);
+
+// 配列aの中から、偶数だけをとりだして、条件にあったものだけを、新しい配列に入れてる
+const even = a.filter((item) => {
+  if (item % 2 === 0) return true;
+  return false; // 偶数なら → true, 偶数じゃなければ → false
+});
+
+console.log(`even is : ${even}`); //even is : 2
+
+// (item) => { ... }これは コールバック関数。
+// filter はこの関数を使って各要素を item に入れて1つずつ実行する
+
+// shorter version of the above code
+const evenShorter = a.filter((item) => item % 2 === 0);
+console.log(`evenShorter is : ${evenShorter}`);
+
+/// remove an item from an array 削除
+const deleteItems = a.filter((item) => item !== 3);
+console.log(`a is : ${a}`);
+console.log(`deleteItems is : ${deleteItems}`); //deleteItems is : 1,2
+
+/// remove multipul items たくさんのアイテムを一度に処理する
+const items = ["a", "b", "c", "d", "e", "f"];
+const valuesToRemove = ["c", "d"];
+const filteredItems = items.filter((item) => !valuesToRemove.includes(item));
+console.log(`filteredItems is : ${filteredItems}`); //filteredItems is : a,b,e,f
