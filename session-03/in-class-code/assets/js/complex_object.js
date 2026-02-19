@@ -21,11 +21,14 @@ const userObject = {
 };
 
 userObject.addSkills("Docker");
+userObject.isStudent = true;
 
 console.log(userObject.firstName); // Output: John
 console.log(userObject.address.city); // Output: Anytown
 console.log(userObject.skills[0]); // Output: JavaScript
 console.log(userObject.socialProfiles.twitter); // Output: @johndoe
+console.log(userObject.isStudent);
+console.log("今これ");
 
 userObject.firstName = "Xavier";
 userObject["url"] = "https://www.9thlevel.com";
@@ -43,10 +46,10 @@ userObject.fullNamefunction(userObject.firstName, userObject.lastName);
 
 // userObject.fullAddressfunction(userObject.address);
 
-userObject["fullAddressfunction"] = function () {
-  console.log(
-    `This: ${this}``This address: ${this.address.street}, ${this.address.city}, ${this.address.postCode}`
-  );
-};
+// userObject["fullAddressfunction"] = function () {
+//   console.log(
+//     `This: ${this}``This address: ${this.address.street}, ${this.address.city}, ${this.address.postCode}`,
+//   );
+// };
 
-userObject.fullAddressfunction();
+// userObject.fullAddressfunction();
