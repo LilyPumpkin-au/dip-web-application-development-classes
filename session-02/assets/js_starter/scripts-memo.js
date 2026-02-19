@@ -329,8 +329,86 @@ const deleteItems = a.filter((item) => item !== 3);
 console.log(`a is : ${a}`);
 console.log(`deleteItems is : ${deleteItems}`); //deleteItems is : 1,2
 
-/// remove multipul items たくさんのアイテムを一度に処理する
+/// remove multipul items たくさんのアイテムを一度に削除する
 const items = ["a", "b", "c", "d", "e", "f"];
 const valuesToRemove = ["c", "d"];
 const filteredItems = items.filter((item) => !valuesToRemove.includes(item));
 console.log(`filteredItems is : ${filteredItems}`); //filteredItems is : a,b,e,f
+
+//////////////////// Sort
+// ソートは項目をアルファベット順に並べ替えるために使用されます​
+// 逆順ソートは逆順に並べ替えます​
+// 数値には対応していません​
+// ASCIIコードを使用します​
+// 数値を並べ替えるにはカスタム関数を使用する必要があります
+
+const aa = ["b", "c", "d", "a"];
+///  sort
+console.log(aa.sort()); // Array(4) [ "a", "b", "c", "d" ]
+
+/// reverse
+console.log(aa.reverse()); //Array(4) [ "d", "c", "b", "a" ]
+
+/// sorting numbers using a custom(anonymous) function
+/// （小さい → 大きい）に並び替えて、その結果を表示している
+console.log(a.sort((a, b) => (a > b ? 1 : -1))); ///////////////ternary operator  三項演算子 (Ternary Operator)
+// 条件分岐を1行で書く方法  条件 ? 値1 : 値2
+//  やってることは、
+// if (a > b) {
+//   return 1;
+// } else {
+//   return -1;
+// }
+
+/// FIND : finds a element in an array
+//  条件に合う「最初の1つ」を返す
+const items2 = [{ name: "a" }, { name: "b" }, { name: "c" }];
+const itemFound = items2.find((item) => item.name === "b");
+console.log(JSON.stringify(itemFound));
+
+/// FINDINDEX :     Returns the index of the first true item​
+const itemIndex = items2.findIndex((item) => item.name === "b");
+console.log(itemIndex);
+
+// 戻り値
+///find	            :条件に合った 要素そのもの
+// findIndex	      :条件に合った インデックス
+// 条件に合わない場合	:find → undefined, findIndex → -1
+
+///////////////////////コールバック関数ってなに？
+// 他の関数に引数として渡され、あるタイミングで呼び出される関数
+
+function processUserInput(callback) {
+  const name = "Julia";
+  callback(name); // 渡された関数をここで呼び出す
+}
+
+function greet(name) {
+  console.log("Hello " + name);
+}
+
+processUserInput(greet); //// ここで greet を渡している
+
+// processUserInput(greet) を呼ぶ
+// → greet という関数が 引数 callback に渡される
+// → つまり callback と greet は同じものになる
+
+// processUserInput の中で
+// callback(name);
+// と書かれているので 実質的には
+// greet(name);
+// と同じ意味になります。
+
+//////////////////////////////
+/// FOREACH :     Execute a ‘callback’ function​, On every element of the array
+
+list5.forEach((element) => {
+  console.log(element * 2);
+});
+
+console.log(list5);
+
+//////////////////// Challenge 4
+///////////////////
+
+console.log("今これ");
