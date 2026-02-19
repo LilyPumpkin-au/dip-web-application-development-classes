@@ -1,0 +1,65 @@
+.bubble {
+  width: 200px;
+  height: 200px;
+  opacity: 0.8;
+  margin: 100px auto;
+  /* transform: translateY(50px) scale(0.8); */
+  transition: 0.8s ease;
+}
+
+/* .bubble-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #aeefff, #6dd5ed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 4s ease-in-out infinite;
+} */
+
+/* 奇数 → 右から */
+.bubble:nth-child(odd) {
+  transform: translateX(200px);
+}
+
+/* 偶数 → 左から */
+.bubble:nth-child(even) {
+  transform: translateX(-200px);
+}
+
+.bubble.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bubble-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #aeefff, #6dd5ed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* @keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+} */
