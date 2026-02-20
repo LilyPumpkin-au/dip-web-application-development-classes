@@ -64,6 +64,7 @@ greet3("lily"); // → Hey lily
 //////////////////// Methods :オブジェクトの中にある関数
 const person = {
   name: "Lily",
+  age: 28,
   greet: function () {
     console.log("Hello, " + this.name);
   },
@@ -93,3 +94,104 @@ console.log(add(4)); // → 4 （bはデフォルト0）
 // | function  | 独立した処理          | `func()`                 | `function greet(name) {}`    |
 // | method    | オブジェクトの中の関数 | `obj.method()`           | `const obj = { greet() {} }` |
 // | parameter | 入力値                | 関数内で変数として使う     | `greet(name)`                |
+
+///////////////////  Objects: De-structuring
+/// extracting some properties
+const { name, age } = person;
+console.log({ name, age });
+
+/// renameing
+// const { name: firstName, age } = person;
+
+///!!! Object points at the same object !!!
+// If ​
+// const a = { name: ‘Sue’ }​
+// Then ​
+// const b = a​
+// Results in a and b pointing at the same object.​
+
+/////////////////// Object : Shallow コピー
+// 1段階だけコピーする。
+// 中にオブジェクトがある場合は、
+// 「中身」ではなく「参照（アドレス）」をコピーする。
+
+// const user = {
+//   name: "Lily",
+//   address: {
+//     city: "Perth"
+//   }
+// };
+
+// const copy = { ...user };
+// copy.address.city = "Tokyo";
+// console.log(user.address.city); //　Tokyo
+
+////////////////// Object : DEEP コピー
+// ネストされた中身まで全部コピーする。
+// 完全に別物になる。
+
+// const user = {
+//   name: "Lily",
+//   address: {
+//     city: "Perth"
+//   }
+// };
+
+// const deepCopy = structuredClone(user);
+// deepCopy.address.city = "Tokyo";
+// console.log(user.address.city); // Perth
+
+/// DeepClone Synatax
+// 1 mordarn way
+const original = [];
+const copyLatest = structuredClone(original);
+
+// 2 traditional
+const copyJASON = JSON.parse(JSON.stringify(original));
+// ❌ function 消える
+// ❌ undefined 消える
+// ❌ Dateが文字列になる
+// ❌ Map, Set 使えない
+
+/////////////////// Make a copy of an object
+// use the SPREAD OPERATOR
+let newUserObject = { ...userObject };
+
+////////////////// Objects: Sorting an Array of Objects
+const list = [
+  { color: "purple", size: "XL" },
+  { color: "red", size: "S" },
+  { color: "black", size: "3XL" },
+  { color: "green", size: "2XL" },
+];
+
+list.sort((a, b) => (a.color > b.color ? 1 : -1));
+console.log(list);
+// アルファベット順になった
+// Array(4) [ {…}, {…}, {…}, {…} ]
+// 0: Object { color: "black", size: "3XL" }
+// 1: Object { color: "green", size: "2XL" }
+// 2: Object { color: "purple", size: "XL" }
+// 3: Object { color: "red", size: "S" }
+
+list.sort((a, b) =>
+  a.color > b.color ? 1 : a.color === b.color ? (a.size > b.size ? 1 : -1) : -1,
+);
+console.log(list);
+
+///////////////////// Merging Objects
+/// Use spread operator
+const personName = {
+  name: "Sebastian",
+};
+
+const personAge = {
+  age: 53,
+};
+
+const thePerson = { ...personName, ...personAge };
+
+console.log(thePerson);
+//    Object { name: "Sebastian", age: 53 }
+//    age: 53
+//    name: "Sebastian"
