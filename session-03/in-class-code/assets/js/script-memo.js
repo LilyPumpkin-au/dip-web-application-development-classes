@@ -155,7 +155,7 @@ const copyJASON = JSON.parse(JSON.stringify(original));
 
 /////////////////// Make a copy of an object
 // use the SPREAD OPERATOR
-let newUserObject = { ...userObject };
+// let newUserObject = { ...userObject };
 
 ////////////////// Objects: Sorting an Array of Objects
 const list = [
@@ -195,3 +195,104 @@ console.log(thePerson);
 //    Object { name: "Sebastian", age: 53 }
 //    age: 53
 //    name: "Sebastian"
+
+////////////////////// Object : classes in JavaScript
+// JavaScriptにはクラスが存在しますが、他の言語における典型的な意味でのクラスではありません。
+// クラスは`class`キーワードを使用して定義される関数です：
+// !!!オブジェクトを作るための設計図（template）
+
+//  class ClassName {​
+// // properties / methods​
+// }
+
+///////////////////// Object: Classes : Degin Properties "Constructor method"
+// 例：「長方形オブジェクトを作るための設計図」
+class Rectangle {
+  constructor(aSide, bSide) {
+    this.side1 = aSide;
+    this.side2 = bSide;
+  }
+
+  area() {
+    return this.side1 * this.side2;
+  }
+
+  perimeter() {
+    return 2 * (this.side1 + this.side2);
+  }
+}
+
+// create the instance of the class ここで、オブジェクトが作られる。　クラスは設計図なだけで、インスタンスを作ってはいない
+// オブジェクトを作るための型（blueprint）
+const rectangleInstance = new Rectangle(5, 10);
+
+console.log("rectangle Instance : ", rectangleInstance);
+
+////////////////////////// Prottype : オブジェクトが機能を共有するための仕組み
+// JavaScript はProtTypeベースの言語
+// prototype は  「メソッドがよく入っている場所」
+// でも実は、     メソッドも入る、データも入る、なんでも入る
+//               ただ「共有したいもの」を入れるのが一般的。
+// 自分のプロパティ　＋　親へのリンク
+// prototype は親、オブジェクトは子供
+
+////////////////////////// クラスとプロトタイプの関係
+// | classで書いたもの | 実際に起きてること     |
+// | -----------      | ------------- |
+// | constructor      | 普通の関数         |
+// | メソッド         | prototypeに追加  |
+// | new             | prototypeをリンク |
+
+////////////////////////  Constructor Pattern
+// useful when you need to create multiple objects of
+// the same type​
+// each instance created with the constructor pattern
+// has its own copy of instance-specific properties​
+
+///////////////////////////  Cookie / Local Storage / Session Storage の違い
+// Cookie           :小さいデータ, サーバーとやり取りされる,ログイン情報など
+// localStorage     :ブラウザに保存される,消さない限り残る, 永続保存
+// sessionStorage   :タブを閉じると消える, 一時的な保存
+
+//////////////////////// Web Storage APIとは？
+// ブラウザにデータを保存できる仕組み。
+// サーバーに送らなくても、ユーザーのブラウザの中にデータを保存できる。
+
+/////// window.localStorage
+// 長期保存 (ノートに保存　ずっと残る)
+// ブラウザを閉じても消えない、PCを再起動しても残る、明示的に削除しない限り残る
+// 後からでも使いたいデータはこっち
+
+// 使う場面
+// ダークモード設定、ログイン情報（トークン）、ユーザー設定、言語設定
+
+// Example
+localStorage.setItem("username", "lily");
+
+const name2 = localStorage.getItem("username");
+console.log(name2);
+
+localStorage.clear();
+
+//////// window.sessionStorage
+// 一時保存　transient data　（ホワイトボード、消える）
+// タブを閉じると消える,同じサイトでも「別タブ」は別データ,セッション中だけ保持
+
+// 使う場面
+// フォーム入力の一時保存、ページ間の一時データ、一時的な状態管理
+
+// Example
+sessionStorage.setItem("step", "1");
+
+const step = sessionStorage.getItem("step");
+console.log(step);
+console.log("this one");
+
+//////// 文字列しか保存できない
+// → オブジェクトは JSON.stringify() が必要
+const user2 = { name: "meron", age: 25 };
+
+localStorage.setItem("user2", JSON.stringify(user2));
+
+const savedUser = JSON.parse(localStorage.getItem("user2"));
+console.log(savedUser.name);
