@@ -1,5 +1,6 @@
 // Challenge 4 Starter
 // Get the form element
+const from = document.querySelector("form");
 
 // localStorage prefix
 let prefix = "autosave_";
@@ -10,6 +11,12 @@ let prefix = "autosave_";
  */
 function inputHandler(event) {
   //
+  const field = event.target;
+
+  // dont save, if there is no name
+  if (!field.name) return;
+
+  localStorage.setItem(prefix + field.name, field.value);
 }
 
 /**
@@ -17,6 +24,7 @@ function inputHandler(event) {
  */
 function clearStorage() {
   //
+  localStorage.clear();
 }
 
 /**
@@ -24,8 +32,23 @@ function clearStorage() {
  */
 function loadSaved() {
   //
+  const elements = from.elements;
+
+  for(let i = 0; i < elements.length: i++){
+    const field = elements[i];
+
+    if(!field.name) continue;
+
+    const saved = localStorage.getItem(prefix + field.name);
+
+    if(saved){
+      field.value = saved;
+    }
+  }
 }
 
 // Load saved data from localStorage
+loadSaved();
 
 // Listen for DOM events
+from.addEventListener("inpu", inputHandler);
