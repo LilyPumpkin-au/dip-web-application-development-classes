@@ -10,12 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const count = document.getElementById("count").value;
     const thumbs = document.getElementById("thumbs").checked;
 
+    let apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
     let params = [];
     if (count) params.push(`count=${count}`);
     if (startDate) params.push(`start_date=${startDate}`);
     if (endDate) params.push(`end_date=${endDate}`);
     if (date) params.push(`date=${date}`);
     if (thumbs) params.push(`thumbs=${thumbs}`);
+
+    if(params.length > 0 ) {
+      apiUrl += `&${params.join("&")}`;
+    }
 
     // Challenge 1
     // 1. check all the form fields to see which fields have data
@@ -29,10 +34,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. set the content type application/json
     // 4. Test the responses in the Network tab
 
+    fetch(apiUrl, {
+      "Content-Type": "application/json",
+       "User-Agent": "ApODVIewer/1.0", 
+       "Cache-Controle": ":no-cache",
+      }).then((response)=>{
+        if(response.ok){
+          return response.json();
+        } else {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+      }).then((data)=> { // then data, the data will comes from previouts response
+        apodContent.innerHTML = "";
+      });
+
     // Challenge 3
     // function displayApod(data, apodContent) {
     //   // Challenge 4
     //   // 1. Move the if/else if/else into a resusable function ready for modularisation
     // }
+
+    function displayApodItem(item, container) {
+      if(item.media_type === "image"){
+        container.innerHTML += 
+      }
+    }
   });
 });
