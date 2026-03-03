@@ -56,7 +56,7 @@ export default function greet(name) {
 // { } は使わない
 // 名前は自由につけられる
 import sayHello from "./greet.js";
-console.log(sayHello("Yukie"));
+console.log(sayHello("World"));
 
 ////////////////// Named Export | Default Export 比較
 // |         | Named Export | Default Export |
