@@ -412,3 +412,16 @@ console.log(list5);
 ///////////////////
 
 console.log("今これ");
+
+/////////////////// Arrow Function
+// 1: 中括弧なし・returnなし
+const numbers3 = numbers.map((num) => num * 2);
+// num => num * 2 は 単純な1行の式 なので、自動的に返り値になります（暗黙の return)
+// これが一番短くてよく使われます。
+
+// 2: 中括弧あり・returnあり
+const numbers4 = numbers.map((num) => {
+  return num * 2;
+});
+// 中括弧 {} を使うと、関数ブロック になるので明示的に return が必要です。
+// 複雑な処理や複数行書きたいときに使います。
