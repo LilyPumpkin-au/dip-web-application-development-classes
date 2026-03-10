@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .skills-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      /* 共通のスキルボックス */
+      .skill {
+        position: absolute;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        outline: 1px var(--DarkBlueText, #152759) solid;
+        outline-offset: -1px;
+        text-align: center;
+      }
+
+      /* テキスト共通 */
+      .skill-text {
+        color: black;
+        font-weight: 400;
+        word-wrap: break-word;
+      }
+
+      /* 小さいテキスト */
+      .skill-text.small-text {
+        font-size: 24px;
+        font-family: "Roboto Condensed", sans-serif;
+      }
+
+      /* 大きいテキスト */
+      .skill-text:not(.small-text) {
+        font-size: 36px;
+        line-height: 33px;
+        font-family: "Bebas Neue", sans-serif;
+      }
+
+      /* 各スキル個別設定（サイズ・色・位置・border-radius） */
+      .main-skill {
+        width: 305px;
+        height: 311px;
+        padding: 108px 113px 107px 108px;
+        left: 8px;
+        top: 0;
+        background: var(--White, #f2ebdc);
+        border-radius: 500px;
+      }
+
+      .design-skill {
+        width: 188px;
+        height: 192px;
+        padding: 34px 44px 33px 43px;
+        left: 0;
+        top: 254px;
+        background: var(--PalePink, #ebceac);
+        border-radius: 120px;
+      }
+
+      .seo-skill {
+        width: 116px;
+        height: 119px;
+        padding: 31px 38px 32px 39px;
+        left: 203px;
+        top: 206px;
+        background: var(--PaleBlueAcc1, #86aeb6);
+        border-radius: 74px;
+      }
+
+      .wp-skill {
+        width: 116px;
+        height: 119px;
+        padding: 31px 38px 32px 39px;
+        left: 86px;
+        top: 409px;
+        background: var(--White, #f2ebdc);
+        border-radius: 74px;
+      }
+
+      .php-react-skill {
+        width: 72px;
+        height: 74px;
+        padding: 18px 19px;
+        left: 203px;
+        top: 341px;
+        background: var(--White, #f2ebdc);
+        border-radius: 74px;
+      }
+
+      .github-skill {
+        width: 72px;
+        height: 74px;
+        padding: 28px 9px 18px 8px;
+        left: 239px;
+        top: 421px;
+        background: var(--YellowAcc2, #d9b777);
+        border-radius: 74px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="skills-container">
+      <div class="skill main-skill">
+        <div class="skill-text">HTML<br />CSS<br />Javascript</div>
+      </div>
+      <div class="skill design-skill">
+        <div class="skill-text">Figma<br />Photoshop</div>
+      </div>
+      <div class="skill seo-skill">
+        <div class="skill-text">SEO</div>
+      </div>
+      <div class="skill wp-skill">
+        <div class="skill-text">Word<br />press</div>
+      </div>
+      <div class="skill php-react-skill">
+        <div class="skill-text small-text">PHP<br />React</div>
+      </div>
+      <div class="skill github-skill">
+        <div class="skill-text small-text">Github</div>
+      </div>
+    </div>
+  </body>
+</html>
