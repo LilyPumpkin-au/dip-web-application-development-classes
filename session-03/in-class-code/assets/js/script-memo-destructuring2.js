@@ -11,6 +11,18 @@
 // 名前を変えるとき
 // let {key: newName}
 
+/////////////////////////////////////////////////
+// 配列とオブジェクトでは「取り出し方のルール」が違います。
+// 配列 → 位置（順番）で取り出す
+// オブジェクト → 名前（キー）で取り出す
+
+// 配列は 位置で取り出すので、順番を維持する必要があります。
+// [ id , country , (ここスキップ) , customer ]
+
+// オブジェクトは キーで取り出します。
+// 他のキーは「書かなければ無視」
+/////////////////////////////////////////////////
+
 // // JavaScript の Destructuring（分割代入） は、配列やオブジェクトの中から値を 簡単に取り出して変数に代入できる文法 です。
 // 問題1：配列の分割代入
 
@@ -71,3 +83,83 @@ const user2 = {
 let { name: userName, country: nation } = user2;
 console.log(userName);
 console.log(nation);
+
+// 問題①（配列 + Rest）
+// 次の配列があります。
+const numbers = [10, 20, 30, 40, 50];
+
+// 条件
+// 1番目 → first
+// 2番目 → second
+// 残り → others
+// Destructuringで書いてください。
+
+// 期待する結果
+// console.log(first);   // 10
+// console.log(second);  // 20
+// console.log(others);  // [30, 40, 50]
+
+const [first, second, ...others] = numbers;
+
+console.log(first);
+console.log(second);
+console.log(others);
+
+// 問題②（オブジェクト + デフォルト値）
+// 次のオブジェクトがあります。
+const product = {
+  title: "Laptop",
+  price: 1500,
+};
+// 条件
+// title → productName
+// price → cost
+// stock → quantity（デフォルト値 0）
+// Destructuringで書いてください。
+
+// 期待する結果
+// console.log(productName); // Laptop
+// console.log(cost);        // 1500
+// console.log(quantity);    // 0
+
+const { title: productName, price: cost, stock: quantity = 0 } = product;
+console.log(productName);
+console.log(cost);
+console.log(quantity);
+
+///////////////////////////////////////
+// ヒント
+// key: newName = defaultValue
+// オブジェクトでデフォルト値を付けるとき
+// const { stock: quantity = 0 } = product;
+// stock があれば → quantity に入る, stock がなければ → 0
+///////////////////////////////////////
+
+// 問題③（ネストされたDestructuring）
+// 次のオブジェクトがあります。
+const order = {
+  id: 101,
+  country: "Australia",
+  langage: "English",
+  customer: {
+    name: "Alex",
+    email: "alex@example.com",
+  },
+};
+// 条件
+// customer の中から
+// name → customerName
+// email → customerEmail
+// を 1回のDestructuringで取得してください。
+
+// 期待する結果
+// console.log(customerName);  // Alex
+// console.log(customerEmail); // alex@example.com
+// ヒント
+// { customer: { ... } }
+
+const {
+  customer: { name: customerName, email: customerEmail },
+} = order;
+console.log(customerName);
+console.log(customerEmail);
