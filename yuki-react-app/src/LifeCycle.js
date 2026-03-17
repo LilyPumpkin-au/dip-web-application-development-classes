@@ -42,7 +42,7 @@ function Lifecycle() {
   );
 
   // Child number 1
-  function CounterDisplay({count}){
+  function CounterDisplay({ count }){
     return <p>Current Count Value : { count } </p>
   }
 
