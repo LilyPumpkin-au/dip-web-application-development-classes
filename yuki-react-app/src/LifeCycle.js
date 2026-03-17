@@ -42,12 +42,12 @@ function Lifecycle() {
   );
 
   // Child number 1
-  function CounterDisplay(count){
+  function CounterDisplay({count}){
     return <p>Current Count Value : { count } </p>
   }
 
     // Child number 2
-  function CounterControls({count, onIncrease, decrementCount}){
+  function CounterControls({count, onIncrease, onDecrease}){
     return (
 
       <>
