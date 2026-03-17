@@ -31,6 +31,10 @@ Install React and ReactDOM as dependencies:
 npm install react@latest react-dom@latest
 ```
 
+```bash
+npm install react@18.3.1 react-dom@18.3.1
+```
+
 ### 4. **Set Up a Build Tool**
 
 You need a build tool to compile JSX and bundle your JavaScript. You can use Webpack and Babel for this purpose.
@@ -45,6 +49,9 @@ npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babe
 ```
 
 **Note:** now we add you .gitignore!
+
+- create .gitignore file in the root of the project
+- copy paste .gitignore code from https://github.com/amigoscode/react-fork/blob/main/.gitignore
 
 #### **Create Webpack Configuration**
 
@@ -158,6 +165,16 @@ Update your `package.json` to include the following scripts:
 }
 ```
 
+that's going to be like this
+
+```json
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production"
+  },
+```
+
 ### 7. **Run Your Project**
 
 Start the development server with:
@@ -167,3 +184,14 @@ npm start
 ```
 
 Your React app should be available at `http://localhost:3000`.
+
+### 8 When setting up the project on your home PC:
+
+Open the terminal (using VSCode’s terminal may cause an error)
+
+```bash
+Run npm install
+Run npm start
+```
+
+Running npm install will read the package-lock.json and package.json files and install all the required packages.
