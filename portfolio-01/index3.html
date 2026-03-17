@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .skills-bubbles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        max-width: 40%;
+      }
+
+      .bubble {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        color: black;
+        border: 2px solid #152759;
+        border-radius: 50%;
+        padding: 20px;
+        background-color: #f2ebdc;
+        line-height: 1.2;
+      }
+
+      /* 大きさ別 */
+      .bubble-large {
+        width: 250px;
+        height: 250px;
+        font-size: 24px;
+      }
+
+      .bubble-medium {
+        width: 180px;
+        height: 180px;
+        font-size: 20px;
+      }
+
+      .bubble-small {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+      }
+
+      /* 色変えたいバブルは個別に */
+      .seo {
+        background-color: #86aeb6;
+      }
+
+      .php-react {
+        background-color: #f2ebdc;
+      }
+
+      .github {
+        background-color: #d9b777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="skills-bubbles">
+      <div class="bubble bubble-large">HTML<br />CSS<br />JAVASCRIPT</div>
+      <div class="bubble bubble-medium">FIGMA<br />PHOTOSHOP</div>
+      <div class="bubble bubble-medium seo">SEO</div>
+      <div class="bubble bubble-small">WORD<br />PRESS</div>
+      <div class="bubble bubble-small php-react">PHP<br />React</div>
+      <div class="bubble bubble-small github">Github</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .skills-bubbles {
+        position: relative;
+        width: 100%;
+        height: 500px; /* 必要に応じて調整 */
+      }
+
+      /* 共通バブル */
+      .bubble {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 400;
+        color: black;
+        border: 2px solid #152759;
+        border-radius: 50%;
+        padding: 20px;
+        background-color: #f2ebdc;
+        line-height: 1.2;
+        cursor: pointer; /* 編集中に選びやすくする */
+        transition: transform 0.2s;
+      }
+
+      .bubble:hover {
+        transform: scale(1.05); /* ホバーで少し拡大 */
+      }
+
+      /* 大きさ別 */
+      .bubble-large {
+        width: 250px;
+        height: 250px;
+        font-size: 24px;
+      }
+
+      .bubble-medium {
+        width: 180px;
+        height: 180px;
+        font-size: 20px;
+      }
+
+      .bubble-small {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+      }
+
+      /* 色を変えたいバブルは個別に */
+      .seo {
+        background-color: #86aeb6;
+      }
+
+      .php-react {
+        background-color: #f2ebdc;
+      }
+
+      .github {
+        background-color: #d9b777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="skills-bubbles">
+      <div class="bubble bubble-large" style="top: 3%; left: 50%">
+        HTML<br />CSS<br />JAVASCRIPT
+      </div>
+      <div class="bubble bubble-medium" style="top: 33%; left: 40%">
+        FIGMA<br />PHOTOSHOP
+      </div>
+      <div class="bubble bubble-medium seo" style="top: 12rem; left: 60%">
+        SEO
+      </div>
+      <div class="bubble bubble-small" style="top: 320px; left: 40%">
+        WORD<br />PRESS
+      </div>
+      <div class="bubble bubble-small php-react" style="top: 18rem; left: 55%">
+        PHP<br />React
+      </div>
+      <div class="bubble bubble-small github" style="top: 360px; left: 65%">
+        Github
+      </div>
+    </div>
+    <div class="skills-bubbles">
+      <div class="bubble bubble-large" style="top: 0; left: 50%">
+        HTML<br />CSS<br />JAVASCRIPT
+      </div>
+      <div class="bubble bubble-medium" style="top: 180px; left: 40%">
+        FIGMA<br />PHOTOSHOP
+      </div>
+      <div class="bubble bubble-medium seo" style="top: 180px; left: 60%">
+        SEO
+      </div>
+      <div class="bubble bubble-small" style="top: 320px; left: 40%">
+        WORD<br />PRESS
+      </div>
+      <div class="bubble bubble-small php-react" style="top: 280px; left: 55%">
+        PHP<br />React
+      </div>
+      <div class="bubble bubble-small github" style="top: 360px; left: 65%">
+        Github
+      </div>
+    </div>
+    <script>
+      const bubbles = document.querySelectorAll(".bubble");
+
+      bubbles.forEach((bubble) => {
+        const amplitudeY = Math.random() * 10 + 2; // 上下の揺れ幅(px)
+        const speed = Math.random() * 0.01; // 揺れる速さ
+        let angle = Math.random() * Math.PI * 2; // 初期角度
+
+        function animate() {
+          angle += speed;
+          const y = Math.sin(angle) * amplitudeY;
+          bubble.style.transform = `translateY(${y}px)`;
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      });
+    </script>
+  </body>
+</html>
