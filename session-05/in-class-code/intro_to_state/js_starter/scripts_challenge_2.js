@@ -1,32 +1,31 @@
 // Challenge - Stage 2
 // The data
 let data = {
-	books: ['Harry Potter I', 'Harry Potter II', 'Harry Potter III']
+  books: ["Harry Potter I", "Harry Potter II", "Harry Potter III"],
 };
 
 // The template
+// props = 外から渡されるデータ (Properties)
 let template = function (props) {
-   let html =
-      '<ul>' +
-           props.books.map(function (book) {
-                return '<li>' + book + '</li>';
-                    }).join('') +
-                '</ul>';
-            return html;
-        };
-
+  let html =
+    "<ul>" +
+    props.books
+      .map(function (book) {
+        return "<li>" + book + "</li>";
+      })
+      .join("") +
+    "</ul>";
+  return html;
+};
 
 // Render the template into the UI
-let app = document.querySelector('#app');
-app.innerHTML = template(data);
-
+let app = document.querySelector("#app");
+app.innerHTML = template(data); // ← dataをpropsとして渡している
 
 // Update the UI
-data.books.push('Harry Potter IV');
-data.books.push('Harry Potter V');
+data.books.push("Harry Potter IV");
+data.books.push("Harry Potter V");
 data.books.pop();
 // data.books.slice(1, 3);
 // data.books.push('Harry Potter V');
 app.innerHTML = template(data);
-
-
