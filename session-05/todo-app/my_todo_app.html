@@ -1,0 +1,134 @@
+
+<style>
+  .app { padding: 1rem 0; }
+  .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem; }
+  .title { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+  .stats { font-size: 13px; color: var(--color-text-tertiary); }
+  .add-row { display: flex; gap: 8px; margin-bottom: 1rem; }
+  .add-row input { flex: 1; }
+  .cat-select { width: 110px; }
+  .filters { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .filter-btn { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; transition: background .15s; }
+  .filter-btn.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+  .todo-list { display: flex; flex-direction: column; gap: 6px; }
+  .todo-card { display: flex; align-items: center; gap: 10px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 10px 12px; transition: opacity .2s; }
+  .todo-card.done { opacity: .55; }
+  .todo-card:hover { border-color: var(--color-border-secondary); }
+  .cb { width: 17px; height: 17px; cursor: pointer; accent-color: var(--color-text-success); flex-shrink: 0; }
+  .todo-text { flex: 1; font-size: 14px; color: var(--color-text-primary); word-break: break-all; }
+  .todo-card.done .todo-text { text-decoration: line-through; color: var(--color-text-tertiary); }
+  .cat-badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; }
+  .cat-仕事    { background: #E6F1FB; color: #0C447C; }
+  .cat-プライベート { background: #EEEDFE; color: #3C3489; }
+  .cat-買い物  { background: #EAF3DE; color: #27500A; }
+  .cat-その他  { background: #F1EFE8; color: #444441; }
+  .del-btn { background: none; border: none; color: var(--color-text-tertiary); cursor: pointer; font-size: 16px; padding: 0 2px; line-height: 1; flex-shrink: 0; opacity: 0; transition: opacity .15s; }
+  .todo-card:hover .del-btn { opacity: 1; }
+  .empty { text-align: center; padding: 2rem 0; color: var(--color-text-tertiary); font-size: 14px; }
+  .progress-bar { height: 4px; background: var(--color-border-tertiary); border-radius: 2px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--color-text-success); border-radius: 2px; transition: width .35s ease; }
+  .clear-btn { font-size: 12px; color: var(--color-text-tertiary); background: none; border: none; cursor: pointer; padding: 0; text-decoration: underline; }
+  .clear-btn:hover { color: var(--color-text-danger); }
+</style>
+
+<div class="app">
+  <div class="header">
+    <p class="title">マイ TODO</p>
+    <span class="stats" id="stats"></span>
+  </div>
+
+  <div class="add-row">
+    <input type="text" id="new-text" placeholder="新しいタスクを入力..." />
+    <select id="new-cat" class="cat-select">
+      <option>仕事</option>
+      <option>プライベート</option>
+      <option>買い物</option>
+      <option>その他</option>
+    </select>
+    <button id="add-btn">追加</button>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <div class="filters" id="filters"></div>
+  <div class="todo-list" id="list"></div>
+  <div style="text-align:right;margin-top:10px;">
+    <button class="clear-btn" onclick="clearDone()">完了済みを削除</button>
+  </div>
+</div>
+
+<script>
+const CATS = ["すべて","仕事","プライベート","買い物","その他"];
+let state = {
+  todos: [
+    { id:1, text:"企画書を仕上げる",    cat:"仕事",    done:false },
+    { id:2, text:"牛乳・卵を買う",      cat:"買い物",  done:false },
+    { id:3, text:"ジムに行く",          cat:"プライベート", done:true  },
+    { id:4, text:"週次レポートを送る",  cat:"仕事",    done:false },
+  ],
+  filter: "すべて",
+  nextId: 5
+};
+
+function visible() {
+  return state.filter === "すべて"
+    ? state.todos
+    : state.todos.filter(t => t.cat === state.filter);
+}
+
+function render() {
+  const total = state.todos.length;
+  const done  = state.todos.filter(t => t.done).length;
+  document.getElementById('stats').textContent = `${done} / ${total} 完了`;
+  document.getElementById('progress').style.width = total ? Math.round(done/total*100)+'%' : '0%';
+
+  document.getElementById('filters').innerHTML = CATS.map(c =>
+    `<button class="filter-btn${state.filter===c?' active':''}" onclick="setFilter('${c}')">${c}</button>`
+  ).join('');
+
+  const items = visible();
+  if (!items.length) {
+    document.getElementById('list').innerHTML = `<div class="empty">タスクがありません</div>`;
+    return;
+  }
+  document.getElementById('list').innerHTML = items.map(t => `
+    <div class="todo-card${t.done?' done':''}">
+      <input type="checkbox" class="cb" ${t.done?'checked':''} onchange="toggle(${t.id})">
+      <span class="todo-text">${esc(t.text)}</span>
+      <span class="cat-badge cat-${t.cat}">${t.cat}</span>
+      <button class="del-btn" onclick="remove(${t.id})" title="削除">&#x2715;</button>
+    </div>
+  `).join('');
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function toggle(id) {
+  const t = state.todos.find(t => t.id===id);
+  if (t) { t.done = !t.done; render(); }
+}
+function remove(id) {
+  state.todos = state.todos.filter(t => t.id!==id);
+  render();
+}
+function setFilter(f) { state.filter = f; render(); }
+function clearDone() {
+  state.todos = state.todos.filter(t => !t.done);
+  render();
+}
+function addTodo() {
+  const input = document.getElementById('new-text');
+  const text = input.value.trim();
+  if (!text) return;
+  const cat = document.getElementById('new-cat').value;
+  state.todos.push({ id: state.nextId++, text, cat, done: false });
+  input.value = '';
+  render();
+}
+document.getElementById('add-btn').onclick = addTodo;
+document.getElementById('new-text').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTodo();
+});
+render();
+</script>
