@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,6 +17,7 @@
       <div class="field">
         <label class="label">Date (YYYY-MM-DD)</label>
         <div class="control">
+          <!-- <input class="input" type="date" /> -->
           <input class="input" type="date" />
         </div>
       </div>
@@ -52,5 +53,39 @@
     </form>
 
     <div id="apod-content"></div>
+
+    <script type="text/babel">
+      const inputStyle = {
+        margin: "5px",
+        padding: "8px",
+        border: "1px, solid #ccc",
+        borderRadius: "4px",
+      };
+
+      function DatainpuComponent() {
+        var nreDate = "";
+
+        const handleCahge = (event) => {
+          // get the event target and extract the value
+          // debugger;
+          newDate = event.target.value;
+        };
+
+        return (
+          <input
+            className="input"
+            type="dete"
+            style={inputStyle}
+            onChange={handleChange}
+          />
+        );
+      }
+
+      const root = ReactDom.createRoot(
+        document.getElementById("react-date-input"),
+      );
+
+      root.render(<DateInputComponent />);
+    </script>
   </body>
 </html>

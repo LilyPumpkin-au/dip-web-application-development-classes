@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>React 18 App</title>
@@ -16,8 +16,9 @@
       function DisplayDate() {
         const today = new Date();
         // Incorrect:
-        return { today };
+        // return { today };
         // return <p>Today's date is: {today.toDateString()}</p>;
+        return <p>Today's data is : {today.toDateString()}</p>;
       }
 
       // Correct usage of ReactDOM.createRoot

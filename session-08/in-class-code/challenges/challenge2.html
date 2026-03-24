@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>React 18 App</title>
@@ -52,6 +52,9 @@
 
         // Destructure the props and render out both users in their own component in a fragment
         return (
+          <>
+            <child name={userName} />
+          </>
         );
       }
 

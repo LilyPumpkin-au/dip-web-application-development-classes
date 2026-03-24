@@ -14,7 +14,7 @@
     <!-- JSX script with type="text/babel" to ensure Babel compiles it -->
     <script type="text/babel">
       function UserList() {
-        const userList = [
+        const users = [
           {
             firstName: "John",
             lastName: "Doe",
@@ -69,24 +69,25 @@
         ];
 
         console.log(userList);
-        // debugger;
+        debugger;
 
         // Iterate over the user list and print out first name, last name, age and skills of each user
         return (
           // Dont foget to wrap you list in the <ul> or <ol>tag
-          <ul>
-            {userList.map((user, index) => (
-              <li key={index}>
-                <p>
-                  Name: {user.firstName} {user.lastName}
-                </p>
-                <p>Age: {user.age}</p>
-                <p>Skills: {user.skills.join(", ")}</p>
-              </li>
-            ))}
-          </ul>
+          <User {...users[0]} />
+          <User {...users[1]} />
         );
       }
+
+      function Users({firstName, age, skillssocialProfiles, isEmployed}) {
+        <>
+        <h2>firstName</h2>
+        <p>{age}</p>
+        <p>Skils: {skills.join(", ")}</p>
+        <p>Twitter: {socialProfiles.twitter}</p>
+        <p>Employment Status: {isEmployed ? "Employed" : "Unemployed"}</p>
+      })
+
       // Correct usage of ReactDOM.createRoot
       const domNode = document.getElementById("app");
       const root = ReactDOM.createRoot(domNode); // Initialise the root.
