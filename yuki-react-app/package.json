@@ -11,8 +11,10 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "css-loader": "^7.1.4",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "style-loader": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
