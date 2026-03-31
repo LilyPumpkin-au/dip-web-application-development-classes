@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client"; // Note the change in import path
-import Lifecycle from "./LifeCycle";
 
+// Template
 function ItemList({ items }) {
   // Your code goes here to return JSX
+  <ol>
+    {items.map(item=> (
+      <li key={item.id}>{item.title}</li>
+      ))}
+  </ol>;
 }
 
 // Usage example
@@ -17,6 +22,7 @@ function ItemList({ items }) {
 //   return <ItemList items={items} />;
 // };
 
+// Data
 function App() {
   const items = [
     { id: 1, title: "First Item" },
@@ -27,7 +33,7 @@ function App() {
   return (
     <>
       <Lifecycle />
-      <ItemList />
+      <ItemList items={items}/>
     </>
   );
 }

@@ -165,15 +165,21 @@ Update your `package.json` to include the following scripts:
 }
 ```
 
+<<<<<<< HEAD
 that's going to be like this
 
 ```json
+=======
+>>>>>>> afca4fb9 (removed yukie-react-app)
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
+<<<<<<< HEAD
 ```
+=======
+>>>>>>> afca4fb9 (removed yukie-react-app)
 
 ### 7. **Run Your Project**
 
