@@ -16,3 +16,5 @@
 3. `npm start` and then open up to your React Developer Tools
 4. Identify and fix the bugs in each file
 5. Run the corrected code to ensure it works as expected with userObject
+
+// Practiced on ../my-react-app
