@@ -4,10 +4,10 @@ let addBook = function (book) {
   if (!book || book.length < 1) return;
 
   // Get the list
-  var list = document.querySelector("#list");
+  let list = document.querySelector("#list");
 
   // Create a new list item
-  var listItem = document.createElement("li");
+  let listItem = document.createElement("li");
   listItem.textContent = book;
 
   // Append the item to the list
