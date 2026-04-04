@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React 18 App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- React and ReactDOM from UMD -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for in-browser JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- JSX script with type="text/babel" to ensure Babel compiles it -->
+    <script type="text/babel">
+      function Parent() {
+        // map　を使うなら、配列にしないといけない
+        const userObject = [
+          {
+            id: 1,
+            firstName: "John",
+            lastName: "Doe",
+            age: 30,
+            isStudent: false,
+            address: {
+              street: "123 Main St",
+              city: "Perth",
+              zipCode: "6000",
+            },
+            skills: ["JavaScript", "HTML", "CSS"],
+            socialProfiles: {
+              twitter: "@johndoe",
+              linkedIn: "linkedin.com/in/johndoe",
+            },
+            isEmployed: true,
+          },
+          {
+            id: 2,
+            firstName: "Tommy",
+            lastName: "Mate",
+            age: 30,
+            isStudent: false,
+            address: {
+              street: "123 Main St",
+              city: "Perth",
+              zipCode: "6000",
+            },
+            skills: ["JavaScript", "HTML", "CSS"],
+            socialProfiles: {
+              twitter: "@johndoe",
+              linkedIn: "linkedin.com/in/johndoe",
+            },
+            isEmployed: true,
+          },
+          {
+            id: 3,
+            firstName: "TAFE",
+            lastName: "Study",
+            age: 30,
+            isStudent: false,
+            address: {
+              street: "123 Main St",
+              city: "Perth",
+              zipCode: "6000",
+            },
+            skills: ["JavaScript", "HTML", "CSS"],
+            socialProfiles: {
+              twitter: "@johndoe",
+              linkedIn: "linkedin.com/in/johndoe",
+            },
+            isEmployed: true,
+          },
+        ];
+
+        // Destructure the props and render out both users in their own component in a fragment
+        return (
+          <>
+            {userObject.map((userObject) => (
+              <Child key={userObject.id} {...userObject} />
+            ))}
+          </>
+        );
+      }
+
+      function Child({ firstName, lastName }) {
+        return (
+          <ul>
+            <li>First Name: {firstName}</li>
+            <li>Last Name: {lastName}</li>
+          </ul>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("app"));
+      root.render(<Parent />);
+    </script>
+  </body>
+</html>

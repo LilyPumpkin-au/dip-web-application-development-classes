@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React 18 App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- React and ReactDOM from UMD -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for in-browser JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- JSX script with type="text/babel" to ensure Babel compiles it -->
+    <script type="text/babel">
+      function Parent() {
+        const userObject = {
+          firstName: "John",
+          lastName: "Doe",
+          age: 30,
+          isStudent: false,
+          address: {
+            street: "123 Main St",
+            city: "Perth",
+            zipCode: "6000",
+          },
+          skills: ["JavaScript", "HTML", "CSS"],
+          socialProfiles: {
+            twitter: "@johndoe",
+            linkedIn: "linkedin.com/in/johndoe",
+          },
+          isEmployed: true,
+        };
+
+        const userObject2 = {
+          firstName: "Tommy",
+          lastName: "Mate",
+          age: 30,
+          isStudent: false,
+          address: {
+            street: "123 Main St",
+            city: "Perth",
+            zipCode: "6000",
+          },
+          skills: ["JavaScript", "HTML", "CSS"],
+          socialProfiles: {
+            twitter: "@johndoe",
+            linkedIn: "linkedin.com/in/johndoe",
+          },
+          isEmployed: true,
+        };
+
+        const userObject3 = {
+          firstName: "TAFE",
+          lastName: "Study",
+          age: 30,
+          isStudent: false,
+          address: {
+            street: "123 Main St",
+            city: "Perth",
+            zipCode: "6000",
+          },
+          skills: ["JavaScript", "HTML", "CSS"],
+          socialProfiles: {
+            twitter: "@johndoe",
+            linkedIn: "linkedin.com/in/johndoe",
+          },
+          isEmployed: true,
+        };
+
+        // Destructure the props and render out both users in their own component in a fragment
+        // version 1 の時は、これはいらない
+        const { firstName, lastName } = userObject;
+        const { firstName: firstName2, lastName: lastName2 } = userObject2;
+        const { firstName: firstName3, lastName: lastName3 } = userObject3;
+
+        return (
+          // version 1
+          // <>
+          //   <Child
+          //     firstName={userObject.firstName}
+          //     lastName={userObject.lastName}
+          //   />
+          //   <Child
+          //     firstName={userObject2.firstName}
+          //     lastName={userObject2.lastName}
+          //   />
+          // </>
+
+          // version 2
+          <>
+            <Child {...{ firstName, lastName }} />
+            <Child firstName={firstName2} lastName={lastName2} />
+            <Child firstName={firstName3} lastName={lastName3} />
+          </>
+        );
+      }
+
+      function Child({ firstName, lastName }) {
+        return (
+          <ul>
+            <li>First Name: {firstName}</li>
+            <li>Last Name: {lastName}</li>
+          </ul>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("app"));
+      root.render(<Parent />);
+    </script>
+  </body>
+</html>
