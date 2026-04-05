@@ -1,7 +1,7 @@
 // updates for activity 1
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./assets/css/style.css";
+import "./asset/css/style.css";
 import App from "./App.js";
 // 2) Get a reference to the div with ID root
 const element = document.getElementById("root");
@@ -12,5 +12,5 @@ const root = ReactDOM.createRoot(element);
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

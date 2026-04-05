@@ -1,7 +1,7 @@
 // note this file needs to be moved into my-react-app to work
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "../assets/css/style.css";
+import "../asset/css/style.css";
 
 function StyledComponent() {
   return (
@@ -10,3 +10,5 @@ function StyledComponent() {
     </section>
   );
 }
+
+export default StyledComponent;

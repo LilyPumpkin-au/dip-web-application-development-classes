@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <StyledComponent />
-      <FormComponent />
+      {/* <FormComponent /> */}
     </div>
   );
 };
