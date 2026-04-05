@@ -6,6 +6,7 @@ function DateInputComponent({ newDate = "", onDateChange }) {
     padding: "8px",
     border: "1px solid #ccc",
     borderRadius: "4px",
+    backgroundColor: "#eee",
   };
   var newDate = "";
 
