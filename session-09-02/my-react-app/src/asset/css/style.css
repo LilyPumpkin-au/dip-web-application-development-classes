@@ -21,5 +21,9 @@
   background-color: lightgray;
   padding: 10px;
   border-radius: 5px;
-  animation: fadeInScale 3s ease-in-out infinite;
+  /* animation: fadeInScale 3s ease-in-out infinite; */
+  animation-name: fadeInScale;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
 }
