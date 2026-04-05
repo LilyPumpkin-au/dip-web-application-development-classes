@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bulma": "^1.0.4",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
@@ -20,7 +21,10 @@
     "@babel/preset-env": "^7.29.2",
     "@babel/preset-react": "^7.28.5",
     "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.4",
+    "dotenv-webpack": "^9.0.0",
     "html-webpack-plugin": "^5.6.6",
+    "style-loader": "^4.0.0",
     "webpack": "^5.105.4",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.3"
