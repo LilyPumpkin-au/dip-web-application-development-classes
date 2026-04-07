@@ -32,7 +32,9 @@
       const fullName = firstName + " " + lastName;
 
       function handleFirstNameChange(e) {
+        console.log(`Before state change ${firstName} ${e.target.value}`);
         setFirstName(e.target.value);
+        console.log(`After state change ${firstName} ${e.target.value}`);
       }
 
       function handleLastNameChange(e) {
